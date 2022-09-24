@@ -53,14 +53,16 @@ textarea {
   color: white;
 }
 
-.saveBtn {
-  width: 100%;
-  height: 100%;
-  background-color: #06aed5;
-  color: white;
+button {
+  width: 50%;
 }
 
-.saveBtn i:hover {
-  font-size: 20px;
+/* .saveBtn {
+  background-color: #06aed5;
+  color: white;
+} */
+
+/* .saveBtn i:hover {
+  font-size: 120%;
   transition: all 0.3s ease-in-out;
-}
+} */

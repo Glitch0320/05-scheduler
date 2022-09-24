@@ -1,6 +1,3 @@
-// TODO: Apply styling for past, present, and future
-// 
-
 // select elements
 var currentDay = $('#currentDay');
 var container = $('.container');
@@ -8,6 +5,7 @@ var container = $('.container');
 // GLOBAL VARS
 const hours = [9, 10, 11, 12, 1, 2, 3, 4];
 const milhours = [9, 10, 11, 12, 13, 14, 15, 16];
+var endOfHour = false;
 
 const now = moment();
 currentDay.text(now.format('MMMM Do YYYY, h:mm:ss a'));
@@ -24,6 +22,11 @@ var clock = setInterval( () => {
 
     now.add(1, 'second');
     currentDay.text(now.format('MMMM Do YYYY, h:mm:ss a'));
+
+    // If end of hour (9:00), call display
+    endOfHour ? displaySchedule() : endOfHour = false;
+
+    endOfHour = now.format('mm:ss') === '59:59' ? true : false;
 
 }, 1000);
 
@@ -71,5 +74,3 @@ $('button').on('click', (e) => {
     displaySchedule();
 
 });
-
-console.log(parseInt(now.format('HH')))
