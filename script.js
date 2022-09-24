@@ -23,9 +23,8 @@ var clock = setInterval( () => {
     now.add(1, 'second');
     currentDay.text(now.format('MMMM Do YYYY, h:mm:ss a'));
 
-    // If end of hour (9:00), call display
-    endOfHour ? displaySchedule() : endOfHour = false;
-
+    // If end of hour (9:00), call display 
+    endOfHour ? displaySchedule() : endOfHour = false; 
     endOfHour = now.format('mm:ss') === '59:59' ? true : false;
 
 }, 1000);

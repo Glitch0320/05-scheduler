@@ -57,10 +57,17 @@ button {
   width: 50%;
 }
 
-/* .saveBtn {
+.saveBtn {
   background-color: #06aed5;
   color: white;
-} */
+  display: block;
+}
+
+.dltBtn {
+  background-color: #ff0000;
+  color: white;
+  display: block;
+}
 
 /* .saveBtn i:hover {
   font-size: 120%;
