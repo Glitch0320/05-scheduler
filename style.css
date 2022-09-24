@@ -60,7 +60,7 @@ button {
 .saveBtn {
   background-color: #06aed5;
   color: white;
-  display: block;
+  display: inline;
 }
 
 .dltBtn {
@@ -69,7 +69,7 @@ button {
   display: block;
 }
 
-/* .saveBtn i:hover {
-  font-size: 120%;
-  transition: all 0.3s ease-in-out;
-} */
+.saveBtn:hover {
+  cursor: pointer; 
+  background-color: #0684a0;
+}

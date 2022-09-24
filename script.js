@@ -16,6 +16,7 @@ currentDay.text(now.format('MMMM Do YYYY, h:mm:ss a'));
 var notes = JSON.parse(localStorage.getItem('notes'));
 if (!notes) {
     notes = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+    localStorage.setItem('notes', JSON.stringify(notes));
 }
 
 var clock = setInterval( () => {
@@ -49,7 +50,7 @@ function displaySchedule() {
         notes[i] === ' ' ? notes[i] = '' : notes[i] = notes[i];
 
         // add a row with three columns for hour, note, and button
-        note = `<div class="row pt-2"><div class="col-2 p-0 text-center my-auto">${hours[i]} ${a}</div><div class="col-8 p-0"><textarea id="txt-${i}" class="${timeState}">${notes[i]}</textarea></div><div class="col-2 p-0"><button type="button" id="btn-${i}" class="saveBtn">save</button></div></div>`;
+        note = `<div class="row pt-2"><div class="col-2 p-0 text-center my-auto">${hours[i]} ${a}</div><div class="col-8 p-0"><textarea id="txt-${i}" class="${timeState}">${notes[i]}</textarea></div><div class="col-2 p-0 my-auto"><span id="btn-${i}" class="bi-save saveBtn p-2 ml-2 rounded"></span></div></div>`;
 
         container.append(note);
 
@@ -60,14 +61,11 @@ function displaySchedule() {
 displaySchedule();
 
 // EVENT LISTENER for all buttons
-$('button').on('click', (e) => {
+$('.container').delegate('span', 'click', (e) => {
 
-    btnIndex = parseInt(e.target.getAttribute('id')[4]);
-    notes[btnIndex] = $(`#txt-${btnIndex}`).val();
-
-    for (let i = 0; i < notes.length; i++) {
-        notes[i] === '' ? notes[i] = ' ' : notes[i] = notes[i];
-    }
+    var btnIndex = parseInt(e.target.getAttribute('id')[4]);
+    notes[btnIndex] = $(`#txt-${btnIndex}`).val() === '' ?
+    ' ' : $(`#txt-${btnIndex}`).val() ;
 
     localStorage.setItem('notes', JSON.stringify(notes));
     displaySchedule();
